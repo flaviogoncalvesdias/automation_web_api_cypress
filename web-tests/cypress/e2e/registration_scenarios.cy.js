@@ -1,17 +1,17 @@
 describe('Registration tests', () => {
-    // it('Registration successfully', () => {
-    //     cy.visit('/login')
-    //     cy.getDataTime().then((dateTime) => {
-    //         cy.registration('Test User', 'testuser' + dateTime + '@test.com', '123456789');
-    //     });
-    //     cy.get('.alert-link')
-    //         .should('have.text', 'Cadastro realizado com sucesso');
-    // })
-
-    it('Registration successfully', () => {
+    it('Registration common user - successfully', () => {
         cy.visit('/login')
         cy.getDataTime().then((dateTime) => {
-            cy.registration('Test User', 'testuser' + dateTime + 'invalid_email.com', '123456789');
+            cy.registrationCommonUser('Test User', 'testuser' + dateTime + '@test.com', '123456789');
+        });
+        cy.get('.alert-link')
+            .should('have.text', 'Cadastro realizado com sucesso');
+    })
+
+    it('Registration Admin user - successfully', () => {
+        cy.visit('/login')
+        cy.getDataTime().then((dateTime) => {
+            cy.registrationAdmin('Test User', 'testuser' + dateTime + '@test.com', '123456789');
         });
         cy.get('.alert-link')
             .should('have.text', 'Cadastro realizado com sucesso');

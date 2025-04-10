@@ -38,23 +38,44 @@ Cypress.Commands.add('getDataTime', () => {
     return cy.wrap(dateTime);
 })
 
-Cypress.Commands.add('registration', (name,email, password) => {
-        cy.get("a[data-testid='cadastrar']")
-            .should('have.text', 'Cadastre-se')
-            .click();
+Cypress.Commands.add('registrationAdmin', (name, email, password) => {
+    cy.get("a[data-testid='cadastrar']")
+        .should('have.text', 'Cadastre-se')
+        .click();
 
-        cy.get('[data-testid="nome"]')
-            .type(name);
-        cy.get('[data-testid="email"]')
-            .type(email);
+    cy.get('[data-testid="nome"]')
+        .type(name);
+    cy.get('[data-testid="email"]')
+        .type(email);
 
-        cy.get('[data-testid="password"]')
-            .type(password);
+    cy.get('[data-testid="password"]')
+        .type(password);
 
-        cy.get("button[data-testid='cadastrar']")
-            .should('have.text', 'Cadastrar')
-            .click();
+    cy.get('[data-testid="checkbox"]')
+        .check();
 
-        cy.get('[data-testid="checkbox"]')
-            .check();
+    cy.get("button[data-testid='cadastrar']")
+        .should('have.text', 'Cadastrar')
+        .click();
+
+
+})
+
+Cypress.Commands.add('registrationCommonUser', (name, email, password) => {
+    cy.get("a[data-testid='cadastrar']")
+        .should('have.text', 'Cadastre-se')
+        .click();
+
+    cy.get('[data-testid="nome"]')
+        .type(name);
+    cy.get('[data-testid="email"]')
+        .type(email);
+
+    cy.get('[data-testid="password"]')
+        .type(password);
+
+    cy.get("button[data-testid='cadastrar']")
+        .should('have.text', 'Cadastrar')
+        .click();
+
 })
