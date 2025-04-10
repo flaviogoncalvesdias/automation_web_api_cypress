@@ -58,6 +58,9 @@ Cypress.Commands.add('registrationAdmin', (name, email, password) => {
         .should('have.text', 'Cadastrar')
         .click();
 
+    cy.get('.alert-link')
+        .should('have.text', 'Cadastro realizado com sucesso');
+
 
 })
 
@@ -78,4 +81,26 @@ Cypress.Commands.add('registrationCommonUser', (name, email, password) => {
         .should('have.text', 'Cadastrar')
         .click();
 
+    cy.get('.alert-link')
+        .should('have.text', 'Cadastro realizado com sucesso');
+
+})
+Cypress.Commands.add('productRegistration', (name, price, description, quantity) => {
+
+    cy.get('.alert-link')
+        .should('have.text', 'Cadastro realizado com sucesso');
+
+    cy.get('[data-testid="cadastrarProdutos"]')
+        .click();
+
+    cy.get('[data-testid="nome"]')
+        .type(name);
+    cy.get('[data-testid="preco"]')
+        .type(price);
+    cy.get('[data-testid="descricao"]')
+        .type(description);
+    cy.get('[data-testid="quantity"]')
+        .type(quantity);
+    cy.get('[data-testid="cadastarProdutos"]')
+        .click();
 })

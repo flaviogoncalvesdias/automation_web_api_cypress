@@ -6,5 +6,8 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: "https://front.serverest.dev",
+    watchForFileChanges: false,
+    defaultCommandTimeout: 10000,
+    pageLoadTimeout: 60000,
   },
 });
